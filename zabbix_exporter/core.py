@@ -50,7 +50,7 @@ class ZabbixCollector(object):
             api_seconds_total.inc(r.elapsed.total_seconds())
         self.zapi.session.hooks = {'response': measure_api_request}
 
-        self.zapi.login(login, password)
+        self.zapi.login(username=login, password=password)
 
         self.host_mapping = {row['hostid']: row['name']
                              for row in self.zapi.host.get(output=['hostid', 'name'])}
